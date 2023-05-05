@@ -16,18 +16,19 @@ public:
     ~seekBar();
     void mousePressEvent(QMouseEvent *e);
     QString timeToQstr(int t);
+    int getMaxValue();
+    int getValue();
 signals:
     void clicked();
     void changeT1(int v);
+    void Moved(int v);
 public slots:
     void setValue(int value);
     void setH(int h);
     void setMaxValue(int max);
     void setT1(int v);
     void setT2();
-    int getMaxValue();
-    int getValue();
-    int clickSetValue();
+    void clickSetValue();
 private:
     Ui::seekBar *ui;
     int t1;

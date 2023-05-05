@@ -35,6 +35,9 @@
    <item>
     <widget class="CustoWidget" name="bottom" native="true">
      <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="spacing">
+       <number>0</number>
+      </property>
       <item>
        <widget class="CustoWidget" name="widget" native="true">
         <property name="styleSheet">
@@ -69,6 +72,9 @@
                 <pointsize>18</pointsize>
                </font>
               </property>
+              <property name="styleSheet">
+               <string notr="true">color:#fff</string>
+              </property>
               <property name="text">
                <string>TextLabel</string>
               </property>
@@ -95,7 +101,7 @@
                </font>
               </property>
               <property name="styleSheet">
-               <string notr="true">color:#fff;background:rgba(0,0,0,0.5)</string>
+               <string notr="true">color:#fff</string>
               </property>
               <property name="text">
                <string>19:08:52</string>
@@ -131,6 +137,9 @@
          <item>
           <widget class="QWidget" name="widget_2" native="true">
            <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <property name="spacing">
+             <number>0</number>
+            </property>
             <property name="leftMargin">
              <number>0</number>
             </property>
@@ -151,11 +160,40 @@
              </widget>
             </item>
             <item>
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
              <widget class="QPushButton" name="btn_play_last">
               <property name="text">
                <string>上一集</string>
               </property>
              </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>30</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
             </item>
             <item>
              <widget class="QPushButton" name="btn_play_play">
@@ -165,6 +203,22 @@
              </widget>
             </item>
             <item>
+             <spacer name="horizontalSpacer_4">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>30</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
              <widget class="QPushButton" name="btn_play_next">
               <property name="text">
                <string>下一集</string>
@@ -172,11 +226,17 @@
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_play_volume">
-              <property name="text">
-               <string>音量 </string>
+             <spacer name="horizontalSpacer_5">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
               </property>
-             </widget>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
             </item>
             <item>
              <widget class="QPushButton" name="btn_play_showfullscreen">

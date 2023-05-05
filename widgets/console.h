@@ -21,6 +21,8 @@ public:
     ~Console();
     QString getTime();
 
+public slots:
+    void seek(int pos);
 signals:
     void change();
 private:

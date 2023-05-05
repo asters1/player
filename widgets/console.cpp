@@ -8,6 +8,7 @@ Console::Console(MpvWidget *mpv,QWidget *parent) :
     ui(new Ui::Console)
 {
     ui->setupUi(this);
+    ui->seek->setH(100);
     ui->time->setText(getTime());
     this->mpv=mpv;
     t=new QTimer(this);
@@ -15,6 +16,7 @@ Console::Console(MpvWidget *mpv,QWidget *parent) :
     tm=0;
     connect(mpv,&MpvWidget::durationChanged,ui->seek,&seekBar::setMaxValue);
     connect(mpv,&MpvWidget::positionChanged,ui->seek,&seekBar::setValue);
+    connect(ui->seek,&seekBar::Moved,this,&Console::seek);
     connect(t,&QTimer::timeout,this,[=]{
 
     ui->time->setText(getTime());
@@ -91,4 +93,10 @@ QString Console::getTime()
         SS=QString::number(S);
     }
     return SH+":"+SM+":"+SS;
+}
+
+void Console::seek(int pos)
+{
+
+  mpv->command(QVariantList() << "seek" << pos << "absolute");
 }

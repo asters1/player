@@ -9,6 +9,7 @@ seekBar::seekBar(QWidget *parent) : QWidget(parent), ui(new Ui::seekBar) {
   value = 0;
   this->maxValue = 99;
   connect(this, &seekBar::changeT1, this, &seekBar::setT1);
+  connect(this,&seekBar::clicked,this,&seekBar::clickSetValue);
 }
 
 seekBar::~seekBar() { delete ui; }
@@ -35,7 +36,7 @@ int seekBar::getMaxValue() { return this->maxValue; }
 
 int seekBar::getValue() { return this->value; }
 
-int seekBar::clickSetValue() {
+void seekBar::clickSetValue() {
   //    //获取：窗口基于屏幕的位置，左上角位置
   //    QPoint pt = this->pos();
   //获取当前点位于屏幕坐标的点
@@ -55,11 +56,12 @@ int seekBar::clickSetValue() {
 
     qDebug() << "x:" << x << "width:" << ui->bottom->geometry().width()
              << "max:" << getMaxValue() << "t:" << t;
-    setValue(t);
-    return t;
+//    setValue(t);
+    emit Moved(t);
+//    return t;
   } else {
     qDebug() << "不再范围内:" << getValue();
-    return getValue();
+//    return getValue();
   }
 }
 
