@@ -23,6 +23,7 @@ public:
 
 public slots:
     void seek(int pos);
+    void setResolution(QString r);
 signals:
     void change();
 private:

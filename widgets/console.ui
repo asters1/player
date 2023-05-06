@@ -66,7 +66,7 @@
            </property>
            <layout class="QHBoxLayout" name="horizontalLayout_4">
             <item>
-             <widget class="QLabel" name="wh">
+             <widget class="QLabel" name="resolution">
               <property name="font">
                <font>
                 <pointsize>18</pointsize>
@@ -76,7 +76,7 @@
                <string notr="true">color:#fff</string>
               </property>
               <property name="text">
-               <string>TextLabel</string>
+               <string>[0x0]</string>
               </property>
              </widget>
             </item>

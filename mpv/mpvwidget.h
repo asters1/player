@@ -13,9 +13,7 @@ public:
     MpvWidget(QWidget *parent = 0, Qt::WindowFlags f = 0);
     ~MpvWidget();
     void command(const QVariant& params);
-    void getInfo();
-
-    int getTimeLength();
+    QString getResolution();
     void setProperty(const QString& name, const QVariant& value);
     QVariant getProperty(const QString& name) const;
     QSize sizeHint() const { return QSize(480, 270);}
@@ -24,6 +22,8 @@ Q_SIGNALS:
     void durationChanged(int value);
     //进度
     void positionChanged(int value);
+    //分辨率
+    void Resolution(QString resolution);
 
 
 protected:

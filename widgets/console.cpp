@@ -14,6 +14,7 @@ Console::Console(MpvWidget *mpv,QWidget *parent) :
     t=new QTimer(this);
 //    tm=new QTimer(this);
     tm=0;
+    connect(mpv,&MpvWidget::Resolution,this,&Console::setResolution);
     connect(mpv,&MpvWidget::durationChanged,ui->seek,&seekBar::setMaxValue);
     connect(mpv,&MpvWidget::positionChanged,ui->seek,&seekBar::setValue);
     connect(ui->seek,&seekBar::Moved,this,&Console::seek);
@@ -36,8 +37,9 @@ Console::Console(MpvWidget *mpv,QWidget *parent) :
         ui->widget->showNormal();
     });
     connect(ui->btn_play_play,&QPushButton::clicked,mpv,[=]{
-         mpv->command(QStringList() << "loadfile" << "/home/asters/download/localsend/斗罗大陆01.ts");
-         qDebug()<<"时长："<<mpv->getTimeLength();
+//         mpv->command(QStringList() << "loadfile" << "/home/asters/download/localsend/斗罗大陆01.ts");
+         mpv->command(QStringList() << "loadfile" << "/home/asters/bk.ts");
+//         qDebug()<<"时长："<<mpv->getTimeLength();
 
     });
     connect(ui->widget,&CustoWidget::clicked,this,[=]{
@@ -98,5 +100,11 @@ QString Console::getTime()
 void Console::seek(int pos)
 {
 
-  mpv->command(QVariantList() << "seek" << pos << "absolute");
+    mpv->command(QVariantList() << "seek" << pos << "absolute");
+}
+
+void Console::setResolution(QString r)
+{
+    ui->resolution->setText(r);
+
 }

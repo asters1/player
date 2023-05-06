@@ -50,28 +50,29 @@ void MpvWidget::command(const QVariant& params)
     mpv::qt::command_variant(mpv, params);
 }
 
-int MpvWidget::getTimeLength(){
+//int MpvWidget::getTimeLength(){
 
-    int times;
-    double len;
-    mpv_get_property(mpv, "duration", MPV_FORMAT_DOUBLE, &len);
-    times=(int)len;
-    return times;
-}
+//    int times;
+//    double len;
+//    mpv_get_property(mpv, "duration", MPV_FORMAT_DOUBLE, &len);
+//    times=(int)len;
+//    return times;
+//}
 
-void MpvWidget::getInfo()
+QString MpvWidget::getResolution()
 {
 
-    int times;
-    double  width,height,len;
+//    int times;
+    double  width,height;
 
 
     mpv_get_property(mpv, "width", MPV_FORMAT_DOUBLE, &width);
     mpv_get_property(mpv, "height", MPV_FORMAT_DOUBLE, &height);
-    mpv_get_property(mpv, "duration", MPV_FORMAT_DOUBLE, &len);
-    times=(int)len;
+//    mpv_get_property(mpv, "duration", MPV_FORMAT_DOUBLE, &len);
+//    times=(int)len;
             qDebug()<<"分辨率:"<<width<<"x"<<height;
-    qDebug()<<"时长:"<<times/3600<<":"<<times/60<<":"<<times%60;
+            return "["+QString::number(width)+"x"+QString::number(height)+"]";
+//    qDebug()<<"时长:"<<times/3600<<":"<<times/60<<":"<<times%60;
 
 }
 
@@ -140,6 +141,7 @@ void MpvWidget::handle_mpv_event(mpv_event *event)
             if (prop->format == MPV_FORMAT_DOUBLE) {
                 double time = *(double *)prop->data;
                 Q_EMIT durationChanged(time);
+                Q_EMIT Resolution(getResolution());
             }
         }
         break;
